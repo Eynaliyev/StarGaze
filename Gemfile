@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# using sqreen for security
+gem 'sqreen'
 # for authentication
 gem 'devise'
 # for Twitter UI components inc. navbar
