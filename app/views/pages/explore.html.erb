@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-xs-3">
+  	<div class="panel panel-default">
+  		<div class="panel-body">
+        <h5 style="color: grey; font-size: 125%;">Explore:</h5>
+  			<p style="font-wight: bold; opacity:0.85;">This page aggregates listings from ALL users. This means you will easily find interesting people from all around the world. Your listings will also be shown here so that people can easily see your opinions and interests and follow you.</p>
+  		</div>
+  	</div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5 style="color: grey; font-size: 125%;">Trends</h5>
+        <a href="">#Trend #1</a><br>
+        <span style="color: grey;">31k Votes</span><br><br>
+        <a href="">#Trend #2</a><br>
+        <span style="color: grey;">25k Votes</span><br><br>
+        <a href="">#Trend #3</a><br>
+        <span style="color: grey;">16k Votes</span><br><br>
+      </div>
+    </div>
+  </div>  
+  <div class="col-xs-6">
+    <br><br>
+    <%= render '/components/listing_form' %> 
+    <% for @p in @categories %>
+    <div class="panel panel-default post-panel">
+      <div class="panel-body row">
+        <div class="col-sm-1">
+          <img src="/logo231.png", class="rounded-img", height="50px", width="50px"></img>
+        </div>        
+        <div class="col-sm-11">
+          <p class="post-title">
+            <span class="post-owner"><a href="/user/<%= User.find(@p.user_id).username %>">
+              <%= User.find(@p.user_id).username %></a></span>
+          	<span class="post-creation">- <%= @p.created_at.to_formatted_s(:short) %></span>
+          </p>
+          <p class="post-content"><%= @p.name %></p>
+        </div>        
+        <div class="col-sm-12">
+          <p class="post-links">
+            <div class="col-sm-4">
+              <span class="glyphicon glyphicon-menu-up g-links" aria-hidden="true"></span>
+              <span class="counter" aria-hidden="true">100</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="glyphicon glyphicon-menu-down g-links" aria-hidden="true"></span>
+              <span class="counter" aria-hidden="true">100</span>    
+            </div>              
+            <div class="col-sm-4">
+              <span class="glyphicon glyphicon-share g-links" aria-hidden="true"></span>
+              <span class="counter" aria-hidden="true">Share</span>
+            </div>        
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="panel panel-default post-panel">
+      <div class="panel-body row">
+        <div class="col-sm-12">
+          <center>
+            <a href="#">
+              <img src="/infinity180.png", style="height:25px; width: 77px">
+              <p class="opacity: 0.7;">Back to top</p>
+            </a>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="col-xs-3">
+  	<div class="panel panel-default">
+      <div class="panel-body">
+        <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
+        <% for @u in @toFollow do %>
+          <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p style="opacity: 0.5; font-size:90%;">© 2016 Happy Planet About  Help  Blog  Status  Jobs  Terms  Privacy  Cookies  Ads  info  Brand  Advertise  Businesses  Media  Developers  Directory</p>
+      </div>
+    </div>
+  </div>
+</div>

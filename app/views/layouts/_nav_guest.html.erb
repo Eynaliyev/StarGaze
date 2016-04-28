@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+    <img class="navbar-brand" src="/infinity.png">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home </a></li>
+        <li><a href="/categories">Explore </a></li><!--
+        <li class="dropdown">
+          <a href="/categories" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Categories</a></li>
+            <li role="separator" class="divider"></li>           
+            <li><a href="#">All around me</a></li>
+            <li><a href="#">Buy/sell</a></li>
+            <li><a href="#">Dating</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Create a new listing</a></li>
+          </ul>
+        </li>-->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li>
+            <div class="field" style="margin-left: 10px;">
+              <form class="form-inline">
+              <span class="btn btn-submit" style="float: right; margin-top: 3px;"><%= link_to('Log In', new_user_session_path, class: "btn btn-primary") %></span>
+              </form>
+            </div>
+          </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,113 @@
+<% if !user_signed_in? # if the user is not signed in, render this %>
+    <style>
+        body {
+            background: linear-gradient( /* somewhat transparent film on top of the BG to make it look darker. */
+                rgba(0,0,0, 0.7),
+                rgba(0,0,0, 0.7)
+                ), url("/header2.jpg") no-repeat center center fixed
+            
+            ; /* only display once, center horizontal and vertical, dont let scroll change position. */
+            -webkit-background-size: cover;
+            -moz-background-size: cover; /* cover the whole html element. */
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h1 {
+            color: white;
+            font-weight: bold;
+        }        
+        h2 {
+            color: white;
+            font-weight: bold;
+        }
+        h3 {
+            color: white;
+            font-weight: 300;
+        }        
+        .container-index {
+        }
+        .text {
+            color: white;
+            font-weight: 300;
+            font-size: 150%;
+        }
+        .footer-links {
+            text-align: center;
+            color: white;
+            margin-top: 30%;
+            font-size: 75%;
+        }
+        .log-in {
+            float: right;
+            width: 300px;
+            height: 150px;
+            margin-top: 7.5%;
+        }
+        .sign-up {
+            float: left;
+/*            height: 250px;
+            width: 350px; */    
+            background: none;
+        }
+        .log-in-form {
+            margin: 5px;
+        }
+        .main-icon {
+            height:75px;
+            width:75px;
+        }
+        .after-icon {
+            margin-left:5px;
+        }
+        
+    </style>
+    
+    
+    <div class="container-index row">
+        <div class="col-sm-6">
+            <h2>Connect with friends and the world around you on Happy Planet.</h2> <br><br>
+            <p class="text">
+                <img src="/othersyou-white.png" class="main-icon"> <b class="after-icon">Find out how people feel about you.</b><br><br> 
+                <img src="/youothers-white.png" class="main-icon"> <b class="after-icon">Share how you feel about about others.</b><br><br>
+                <img src="/othersothers-white.png" class="main-icon"> <b class="after-icon">Look up people and how others feel about them. Have fun!</b><br><br>
+                
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h1>Sign Up</h1>
+            <h3>It's free and always will be.</h3><br>
+            <div class="sign-up panel">
+                <div class="input-group">
+                     <%= form_for(:user, url: registration_path(:user), class: "form-horizontal") do |f| %>
+                        <%= f.text_field :username, autofocus: true, placeholder:"Username", class:"form-control" %><br>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <%= f.email_field :email, placeholder:"Email", class:"form-control" %><br>
+                        </div>
+                        <% if @minimum_password_length %>
+                            <em>(<%= @minimum_password_length %> characters minimum)</em>
+                        <% end %>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <%= f.password_field :password, autocomplete: "off", placeholder:"Password", class:"form-control" %> <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Repeat Password", class:"form-control" %> <br>
+                        </div>
+                        <span class="btn btn-submit" style="float: left; margin-top: 3px;"><%= f.submit "Sign up", class: "btn btn-success" %></span>
+                    <% end %>    
+                </div>
+            </div> 
+        </div>
+        <div class="col-sm-12">
+            <p class="footer-links">About  Help  Blog  Status  Jobs  Terms  Privacy  Cookies  Ads  info  Brand  Advertise  Businesses  Media  Developers  Directory © 2016 Happy Planet</p>
+        </div>
+    </div>
+
+<% else # if the user IS signed in, render the following %>
+
+    <script>document.location = "/home"</script>
+
+<% end %>
+
