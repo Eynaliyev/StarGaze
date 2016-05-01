@@ -50,9 +50,11 @@
               <span class="counter" aria-hidden="true">Share</span>
             </div>        
           </p>
-             <% if current_user.id == @listing.user_id %>
-               <%= link_to "Edit", edit_listing_path(@listing) %>
-               <% end %>        
+                <% if user_signed_in? %>
+                  <% if current_user.id == @p.user_id %>
+                    <%= link_to "Edit", edit_listing_path(@p) %>
+                  <% end %>
+                <% end %>      
              </div>
 
       </div>
@@ -71,11 +73,16 @@
     </div>
   </div>  
   <div class="col-xs-3">
-  	<div class="panel panel-default">
-      <div class="panel-body">
-        <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
+    <% if user_signed_in? %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
+          <% for @u in @toFollow do %>
+            <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="panel panel-default">
       <div class="panel-body">
         <p style="opacity: 0.5; font-size:90%;">© 2016 Happy Planet About  Help  Blog  Status  Jobs  Terms  Privacy  Cookies  Ads  info  Brand  Advertise  Businesses  Media  Developers  Directory</p>

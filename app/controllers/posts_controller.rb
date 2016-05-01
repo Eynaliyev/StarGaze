@@ -9,9 +9,9 @@ class PostsController < ApplicationController
         @post.user_id = current_user.id # assign the post to the user who created it.
         respond_to do |f|
             if (@post.save) 
-                f.html { redirect_to "", notice: "Post created!" }
+                f.html { redirect_to "/user/" + @post.user_id.to_s, notice: "Post created!" }
             else
-                f.html { redirect_to "", notice: "Error: Post Not Saved." }
+                f.html { redirect_to "" + current_user_path, notice: "Error: Post Not Saved." }
             end
         end
     end

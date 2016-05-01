@@ -13,10 +13,13 @@
                   <div class="col-sm-2" style="font-size: 100%; opacity: 0.7;">FOLLOWERS<br>
                     <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).followers.count %></h6>
                   </div>
-                  <% if current_user.id == @user.id %>
-                    <div class="col-sm-8" style="text-align: right; margin-top: 5px;"><a href="/users/edit"><li type="button" class="btn btn-default" style="color: grey; opacity: 0.8; font-weight: bold;">EDIT PROFILE</li></a></div>
-                  <% else %>
-                    <%= render '/components/follow_button', :user=> User.find_by_username(params[:id]) %>
+
+                  <% if user_signed_in? %>
+                    <% if current_user.id == @user.id %>
+                      <div class="col-sm-8" style="text-align: right; margin-top: 5px;"><a href="/users/edit"><li type="button" class="btn btn-default" style="color: grey; opacity: 0.8; font-weight: bold;">EDIT PROFILE</li></a></div>
+                    <% else %>
+                      <%= render '/components/follow_button', :user=> User.find_by_username(params[:id]) %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -72,9 +75,11 @@
                     <span class="counter" aria-hidden="true">Share</span>
                   </div>        
                 </p>
--              <% if current_user.id == @p.user_id %>
-               <%= link_to "Edit", edit_listing_path(@p) %>
-               <% end %>
+                <% if user_signed_in? %>
+                  <% if current_user.id == @p.user_id %>
+                    <%= link_to "Edit", edit_listing_path(@p) %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -83,9 +88,11 @@
       </div>
   </div>  
   <div class="col-xs-6">
-    <% if current_user.id == @user.id %>
-      <%= render '/components/post_form' %> 
-    <% end %>     
+    <% if user_signed_in? %>
+      <% if current_user.id == @user.id %>
+        <%= render '/components/post_form' %> 
+      <% end %>     
+    <% end %>
     <br><br>
     <% if User.find_by_username(params[:id]).posts.count ==0 %>
       <div class="panel panel-default post-panel">
@@ -123,9 +130,11 @@
                 <span class="counter" aria-hidden="true">Share</span>
               </div>        
             </p>
+            <% if user_signed_in? %>
               <% if current_user.id == @p.user_id %>
                <%= link_to "Edit", edit_post_path(@p) %>
-               <% end %>          
+               <% end %>      
+            <% end %>    
           </div>
         </div>
       </div>
@@ -145,14 +154,16 @@
     </div>
   </div>  
   <div class="col-xs-3">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
-        <% for @u in @toFollow do %>
-          <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
-        <% end %>
+    <% if user_signed_in? %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
+          <% for @u in @toFollow do %>
+            <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
     <!--
     <div class="panel panel-default">
       <div class="panel-body">
