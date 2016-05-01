@@ -78,6 +78,9 @@
                 <% if user_signed_in? %>
                   <% if current_user.id == @p.user_id %>
                     <%= link_to "Edit", edit_listing_path(@p) %>
+                  <% end %>                  
+                  <% if current_user.id == @p.user_id %>
+                    <%= link_to "Delete", listing_path(@p), method: "delete" %>
                   <% end %>
                 <% end %>
               </div>
@@ -130,12 +133,15 @@
                 <span class="counter" aria-hidden="true">Share</span>
               </div>        
             </p>
-            <% if user_signed_in? %>
-              <% if current_user.id == @p.user_id %>
-               <%= link_to "Edit", edit_post_path(@p) %>
-               <% end %>      
-            <% end %>    
-          </div>
+                <% if user_signed_in? %>
+                  <% if current_user.id == @p.user_id %>
+                    <%= link_to "Edit", edit_post_path(@p) %>
+                  <% end %>                  
+                  <% if current_user.id == @p.user_id %>
+                    <%= link_to "Delete", post_path(@p), method: "delete" %>
+                  <% end %>
+                <% end %>          
+              </div>
         </div>
       </div>
       <% end %>

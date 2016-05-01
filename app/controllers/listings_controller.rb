@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
             if (@listing.save)
                 f.html {redirect_to ''+ category_path(@listing.category), notice: "Listing created!" }
             else
-                f.html {redirect_to "", notice: "Error: Listing not saved."}
+                f.html {redirect_to :back, notice: "Error: Listing not saved."}
             end
         end
     end
@@ -33,7 +33,11 @@ class ListingsController < ApplicationController
             render 'edit'
         end
     end    
-
+    def destroy 
+        @listing = Listing.find(params[:id])
+        @listing.destroy
+        redirect_to "/" 
+    end
     private
     def listing_params #allows certain data to be passed via form.
         params.require(:listing).permit(:user_id, :name, :description, :category_id)

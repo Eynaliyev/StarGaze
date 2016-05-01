@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   get '/explore' => 'categories#index'
 
   get '/user/:id' => 'pages#profile'
+
+  delete '/listings/:id' => 'listings#destroy'
+  
+  delete '/posts/:id' => 'posts#destroy'
+
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

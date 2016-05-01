@@ -51,11 +51,14 @@
             </div>        
           </p>
                 <% if user_signed_in? %>
-                  <% if current_user.id == @p.user_id %>
-                    <%= link_to "Edit", edit_listing_path(@p) %>
+                  <% if current_user.id == @listing.user_id %>
+                    <%= link_to "Edit", edit_listing_path(@listing) %>
+                  <% end %>                  
+                  <% if current_user.id == @listing.user_id %>
+                    <%= link_to "Delete", listing_path(@listing), method: "delete" %>
                   <% end %>
-                <% end %>      
-             </div>
+                <% end %>             
+              </div>
 
       </div>
     </div>

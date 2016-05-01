@@ -48,9 +48,16 @@
               <span class="counter" aria-hidden="true">Share</span>
             </div>        
           </p>
-              <% if current_user.id == @post.user_id %>
-               <%= link_to "Edit", edit_post_path(@post) %>
-               <% end %>             </div>
+                <% if user_signed_in? %>
+                  <% if current_user.id == @post.user_id %>
+                    <%= link_to "Edit", edit_post_path(@post) %>
+                  <% end %>                  
+                  <% if current_user.id == @post.user_id %>
+                    <%= link_to "Delete", post_path(@post), method: "delete" %>
+                  <% end %>
+                <% end %>
+
+             </div>
 
       </div>
     </div>
