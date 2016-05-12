@@ -18,19 +18,19 @@ class PagesController < ApplicationController
 
   def profile
     #grab the username from the URL as :id
-    if(User.find_by_username(params[:id]))
+    @user = User.find_by_username(params[:id])
+    if(@user)
       @username = params[:id]
     else
       redirect_to root_path, :notice=> "User not found!"
     end
-    @posts = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+    @posts = Post.all.where("user_id = ?", @user.id)
     @newPost = Post.new
 
-    @listings = Listing.all.where("user_id = ?", User.find_by_username(params[:id]).id)
+    @listings = Listing.all.where("user_id = ?", @user.id)
     @newListing = Listing.new
 
     @toFollow = User.all.first(5)
-    @user=User.find_by_username(params[:id])
   end
   
 #  def explore
