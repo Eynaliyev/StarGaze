@@ -19,6 +19,7 @@
           <% end %>
           <div class="field" style="margin-left: 10px;">
             <%= f.text_field :content, autofocus: true, class: "form-control" %>
+            <%= hidden_field_tag 'recipient_id', @user.id %>
             <span type="button" class="btn btn-submit" style="float: right; margin-top: 3px;"><%= f.submit "Add Post", class: "btn btn-primary" %></span>
           </div>
         <% end %>
