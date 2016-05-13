@@ -11,7 +11,8 @@ class PagesController < ApplicationController
       following.push(@f.id)
     end
 
-    @posts = Post.where("user_id IN (?)", following)
+    @posts = Post.where("user_id IN (?) OR recipient_id IN (?)", following, following)
+
     @newPost = Post.new
     @toFollow = User.all.first(5)
   end
@@ -24,7 +25,12 @@ class PagesController < ApplicationController
     else
       redirect_to root_path, :notice=> "User not found!"
     end
-    @posts = Post.all.where("user_id = ?", @user.id)
+     @posts = Post.where("user_id =? OR recipient_id =?",@user.id,@user.id)
+#    @posts = Post.all.where("recipient_id = ?", @user.id)
+#    - the problem is, this isn't working...not the chained qury...but the id..
+#    @posts = Post.all.where("user_id = ?", @user.id)
+
+
     @newPost = Post.new
 
     @listings = Listing.all.where("user_id = ?", @user.id)
