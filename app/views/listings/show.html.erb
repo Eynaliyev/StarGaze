@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-11">
           <p class="post-title">
-            <span class="post-owner"><a href="/user/<%= User.find(@listing.user_id).username %>">
+            <span class="post-owner"><a href="/user/<%= User.find(@listing.user_id).id %>">
             <%= User.find(@listing.user_id).username %></a></span>
             <span class="post-creation">- <%= @listing.created_at.to_formatted_s(:short) %></span>
           </p>
@@ -79,7 +79,7 @@
       <div class="panel-body">
         <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
         <% for @u in @toFollow do %>
-        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.id %>"><%= @u.username %></a></p>
         <% end %>
       </div>
     </div>

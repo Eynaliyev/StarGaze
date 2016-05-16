@@ -27,7 +27,7 @@
       <div class="panel-body">
         <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
         <% for @u in @toFollow do %>
-        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.id %>"><%= @u.username %></a></p>
         <% end %>
       </div>
     </div>
@@ -53,7 +53,7 @@
           <img src="/logo231.png", class="rounded-img", height="50px", width="50px"></img>
         </div>
         <div class="col-sm-11">
-          <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).username %>"><%= User.find(@p.user_id).username %></a> to <a href="/user/<%= User.find(@p.recipient_id).username %>"><%= User.find(@p.recipient_id).username %> </a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
+          <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>"><%= User.find(@p.user_id).username %></a> to <a href="/user/<%= User.find(@p.recipient_id).id %>"><%= User.find(@p.recipient_id).username %> </a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
           <p class="post-content"><%= @p.content %></p>
         </div>
         <div class="col-sm-12">
