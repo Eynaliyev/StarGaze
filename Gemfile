@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 # using sqreen for security
 gem 'sqreen'
 # for authentication

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default">
   <div class="container-fluid container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,10 +32,12 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <div class="field" style="margin-left: 10px;">
-            <form class="form-inline">
-              <span class="btn btn-submit" style="float: right; margin-top: 3px;"><%= link_to('Log In', new_user_session_path, class: "btn btn-primary") %></span>
-            </form>
+            <div class="field" style="margin-left: 10px;">
+              <form class="form-inline">
+                <span class="btn btn-submit" style="float: right; margin-top: 3px;">
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %></span>
+              </form>
+            </div>
           </div>
         </li>
       </ul>

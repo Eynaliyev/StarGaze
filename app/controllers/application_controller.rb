@@ -5,7 +5,17 @@ class ApplicationController < ActionController::Base
   #call the configured params
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  
+  private
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+   
+  private 
+  def userparams
+  params.require(:user).permit(:provider, :uid, :name, :oauthtoken, :oauthexpiresat)
+  end
+
   #protect the database while allowing these fields to be updated
   protected
   def configure_permitted_parameters

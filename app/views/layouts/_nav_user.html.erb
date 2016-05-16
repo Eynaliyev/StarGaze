@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/home">Home </a></li>
-        <li><a href="/user/<%= current_user.username %>">Profile</a></li>
+        <li><a href="/user/<%= current_user.uid %>">Profile</a></li>
         <li><a href="/categories">Explore</a></li>
         <!--
           <li class="dropdown">
@@ -49,7 +49,7 @@
             <li role="separator" class="divider"></li>
             <li><%= link_to('Settings', edit_user_registration_path) %></li>
             <li role="separator" class="divider"></li>
-            <li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
           </ul>
         </li>
       </ul>
