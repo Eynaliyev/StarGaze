@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
     def index
         @listings = Listing.all
-        @newListing = Listing.new
+        @new_listing = Listing.new
 
         @categories = Category.all
         @newCategory = Category.new
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
         @to_follow = User.all.first(5)
         @user=User.find_by_username(params[:id])
         @listings = @category.listings
-        @newListing = Listing.new
+        @new_listing = Listing.new
     end
     
     def create
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
     end
     
     private
-    def category_params #allows certain data to be passed via form.
+    def category_params # allows certain data to be passed via form.
         params.require(:category).permit(:user_id, :name)
     end
 end

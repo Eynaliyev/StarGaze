@@ -5,12 +5,12 @@
       <img src="/logo231.png" class="rounded-img" height="35px" width="35px"></img>
     </div>
     <div class="col-sm-11">
-      <%= form_for(@newPost) do |f| %>
-      <% if @newPost.errors.any? %>
+      <%= form_for(@new_post) do |f| %>
+      <% if @new_post.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@newPost.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= pluralize(@new_post.errors.count, "error") %> prohibited this post from being saved:</h2>
         <ul>
-          <% @newPost.errors.full_messages.each do |message| %>
+          <% @new_post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
           <% end %>
         </ul>
