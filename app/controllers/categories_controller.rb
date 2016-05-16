@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
         @new_listing = Listing.new
 
         @categories = Category.all
-        @newCategory = Category.new
+        @new_category = Category.new
         
         @to_follow = User.all.first(5)
     end

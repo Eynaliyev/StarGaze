@@ -44,7 +44,7 @@ class ListingsController < ApplicationController
         redirect_to "/" 
     end
     private
-    def listing_params #allows certain data to be passed via form.
+    def listing_params # allows certain data to be passed via form.
         params.require(:listing).permit(:user_id, :name, :description, :category_id)
     end
 end

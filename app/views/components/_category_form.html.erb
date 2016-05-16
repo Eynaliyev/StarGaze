@@ -5,12 +5,12 @@
       <img src="/logo231.png" class="rounded-img" height="35px" width="35px"></img>
     </div>
     <div class="col-sm-11">
-      <%= form_for(@newCategory) do |f| %>
-      <% if @newCategory.errors.any? %>
+      <%= form_for(@new_category) do |f| %>
+      <% if @new_category.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@newCategory.errors.count, "error") %> prohibited this category from being saved:</h2>
+        <h2><%= pluralize(@new_category.errors.count, "error") %> prohibited this category from being saved:</h2>
         <ul>
-          <% @newCategory.errors.full_messages.each do |message| %>
+          <% @new_category.errors.full_messages.each do |message| %>
           <li><%= message %></li>
           <% end %>
         </ul>
