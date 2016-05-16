@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516153354) do
+ActiveRecord::Schema.define(version: 20160516185034) do
 
   create_table "categories", force: :cascade do |t|
     t.text     "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "categories", ["user_id", "created_at"], name: "index_categories_on_user_id_and_created_at"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20160516153354) do
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "post_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20160516153354) do
   create_table "listings", force: :cascade do |t|
     t.text     "name"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "user_id",     limit: 8
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20160516153354) do
     t.string   "username"
     t.string   "provider"
     t.string   "access_token"
-    t.string   "uid"
+    t.integer  "uid",                    limit: 8
     t.string   "name"
     t.string   "first_name"
     t.string   "last_name"

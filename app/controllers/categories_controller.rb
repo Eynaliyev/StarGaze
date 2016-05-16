@@ -17,14 +17,15 @@ class CategoriesController < ApplicationController
     end
 
     def show
-        @categories = Category.all
-        if(Category.find(params[:id]))
-            @category = Category.find(params[:id])
+        categories = Category.all
+        if(categories.find(params[:id]))
+            @category = categories.find(params[:id])
         else
           redirect_to root_path, :notice=> "Category not found!"
         end
-        @to_follow = User.all.first(5)
-        @user=User.find_by_username(params[:id])
+        users = User.all
+        @to_follow = users.all.first(5)
+        @user=users.find_by_id(params[:id])
         @listings = @category.listings
         @new_listing = Listing.new
     end

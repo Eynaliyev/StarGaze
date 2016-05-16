@@ -19,8 +19,10 @@ class ListingsController < ApplicationController
     end
 
     def show
-        @listing = Listing.find(params[:id])
-        @to_follow = User.all.first(5)
+        listings = Listing.all
+        @listing = listings.find(params[:id])
+        users = User.all
+        @to_follow = users.all.first(5)
     end
   
     def edit 
