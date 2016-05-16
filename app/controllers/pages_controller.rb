@@ -19,7 +19,7 @@ class PagesController < ApplicationController
 
   def profile
     #grab the username from the URL as :id
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by_id(params[:id])
     if(@user)
       @username = params[:id]
     else
