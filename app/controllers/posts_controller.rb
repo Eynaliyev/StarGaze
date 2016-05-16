@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     end
     
     def update
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id]) 
 
         if @post.update(post_params)
             redirect_to @post
@@ -38,13 +38,13 @@ class PostsController < ApplicationController
   end
     
     def destroy 
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id]) 
         @post.destroy
         redirect_to "/" 
     end
     
     private
-    def post_params #allows certain data to be passed via form.
+    def post_params # allows certain data to be passed via form.
         params.require(:post).permit(:user_id, :content)
     end
 end

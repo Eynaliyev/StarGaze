@@ -20,15 +20,15 @@ class ListingsController < ApplicationController
 
     def show
         @listing = Listing.find(params[:id])
-        @toFollow = User.all.first(5)
+        @to_follow = User.all.first(5)
     end
   
     def edit 
-        @listing = Listing.find(params[:id]) 
+        @listing = current_user.listings.find(params[:id])
     end
     
     def update
-        @listing = Listing.find(params[:id])
+        @listing = current_user.listings.find(params[:id])
 
         if @listing.update(listing_params)
             redirect_to @listing
@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
         end
     end    
     def destroy 
-        @listing = Listing.find(params[:id])
+        @listing = current_user.listings.find(params[:id])
         @listing.destroy
         redirect_to "/" 
     end

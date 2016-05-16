@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
         @categories = Category.all
         @newCategory = Category.new
         
-        @toFollow = User.all.first(5)
+        @to_follow = User.all.first(5)
     end
 
     def show
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
         else
           redirect_to root_path, :notice=> "Category not found!"
         end
-        @toFollow = User.all.first(5)
+        @to_follow = User.all.first(5)
         @user=User.find_by_username(params[:id])
         @listings = @category.listings
         @newListing = Listing.new

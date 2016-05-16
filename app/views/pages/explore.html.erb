@@ -71,7 +71,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
-        <% for @u in @toFollow do %>
+        <% for @u in @to_follow do %>
         <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.id %>"><%= @u.username %></a></p>
         <% end %>
       </div>

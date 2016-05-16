@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     @posts = Post.where("user_id IN (?) OR recipient_id IN (?)", following, following)
 
     @newPost = Post.new
-    @toFollow = User.all.first(5)
+    @to_follow = User.all.first(5)
   end
 
   def profile
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     @listings = Listing.all.where("user_id = ?", @user.id)
     @newListing = Listing.new
 
-    @toFollow = User.all.first(5)
+    @to_follow = User.all.first(5)
   end
   
 #  def explore
@@ -46,6 +46,6 @@ class PagesController < ApplicationController
 #    @categories = Category.all
 #    @newCategory = Category.new
     
-#    @toFollow = User.all.first(5)
+#    @to_follow = User.all.first(5)
 #  end
 end
