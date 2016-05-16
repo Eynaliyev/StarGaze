@@ -46,13 +46,9 @@
       <% end %>     
       <% end %>
       <h5 style="color: grey; margin-bottom: 42px;">Listings by <%= @user.username %>:</h5>
-      <% if @user.listings.count ==0 %>
-      <div class="panel panel-default post-panel">
-        <div class="panel-body row">
-          <p style="text-align: center;"><span class="post-owner"><%= @user.username %></span> doesn't have any listings yet.
-          </p>
-        </div>
-      </div>
+      <% if @listings.count ==0 %>
+      <p style="text-align: center;"><span class="post-owner"><%= @user.username %></span> doesn't have any listings yet.
+      </p>
       <% else %>   
       <% for @p in @listings %>
       <div class="panel panel-default post-panel">
@@ -108,7 +104,11 @@
     <% end %>     
     <% end %>
     <br><br>  
-    <% for @p in @posts %>
+    <% if @posts.count ==0 %>
+    <p style="text-align: center;"><span class="post-owner"><%= @user.username %></span> doesn't have any listings yet.
+    </p>
+    <% else %> 
+     <% for @p in @posts %>
     <div class="panel panel-default post-panel">
       <div class="panel-body row">
         <div class="col-sm-1">
@@ -149,6 +149,7 @@
       </div>
     </div>
     <% end %>
+    <% end %> 
     <div class="panel panel-default post-panel">
       <div class="panel-body row">
         <div class="col-sm-12">
