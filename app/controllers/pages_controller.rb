@@ -10,8 +10,8 @@ class PagesController < ApplicationController
     for @f in current_user.following do
       following.push(@f.id)
     end
-
-    @posts = Post.where("user_id IN (?) OR recipient_id IN (?)", following, following)
+    @user = current_user
+    @posts = Post.where("user_id IN (?) OR recipient_id IN (?)OR user_id =? OR recipient_id =?", following, following, @user.id, @user.id )
     @new_post = Post.new
     @to_follow = User.all.first(5)
   end

@@ -30,7 +30,7 @@
         <div class="col-sm-11">
           <p class="post-title">
             <span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>">
-            <%= User.find(@p.user_id).username %></a></span>
+            <%= User.find(@p.user_id).name %></a></span>
             <span class="post-creation">- <%= @p.created_at.to_formatted_s(:short) %></span>
           </p>
           <h2 class="post-content"><%= link_to @p.name, listing_path(@p) %></h2>

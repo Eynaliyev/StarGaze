@@ -39,15 +39,15 @@
       <img src="/logo231.png" id="profile-image" style="height:200px; width:200px; border: 2px solid white;" class="rounded-img">
     </div>
     <div class="panel panel-default">
-      <h3><%= @user.username %>:</h3>
+      <h3><%= @user.name %>:</h3>
       <% if user_signed_in? %>
       <% if current_user.id == @user.id %>
       <%= render '/components/listing_form' %> 
       <% end %>     
       <% end %>
-      <h5 style="color: grey; margin-bottom: 42px;">Listings by <%= @user.username %>:</h5>
+      <h5 style="color: grey; margin-bottom: 42px;">Listings by <%= @user.name %>:</h5>
       <% if @listings.count ==0 %>
-      <p style="text-align: center;"><span class="post-owner"><%= @user.username %></span> doesn't have any listings yet.
+      <p style="text-align: center;"><span class="post-owner"><%= @user.name %></span> doesn't have any listings yet.
       </p>
       <% else %>   
       <% for @p in @listings %>
@@ -57,7 +57,7 @@
             <img src="/logo231.png", class="rounded-img", height="50px", width="50px"></img>
           </div>
           <div class="col-sm-11">
-            <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>"><%= User.find(@p.user_id).username %></a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
+            <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>"><%= User.find(@p.user_id).name %></a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
             <span>
               <h4 class="post-content"><%= link_to @p.name, listing_path(@p) %></h4>
             </span>
@@ -105,7 +105,7 @@
     <% end %>
     <br><br>  
     <% if @posts.count ==0 %>
-    <p style="text-align: center;"><span class="post-owner"><%= @user.username %></span> doesn't have any listings yet.
+    <p style="text-align: center;"><span class="post-owner"><%= @user.name %></span> doesn't have any listings yet.
     </p>
     <% else %> 
      <% for @p in @posts %>
@@ -115,7 +115,7 @@
           <img src="/logo231.png", class="rounded-img", height="50px", width="50px"></img>
         </div>
         <div class="col-sm-11">
-          <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>"><%= User.find(@p.user_id).username %></a> to <a href="/user/<%= User.find(@p.recipient_id).id %>"><%= User.find(@p.recipient_id).username %> </a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
+          <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).id %>"><%= User.find(@p.user_id).name %></a> to <a href="/user/<%= User.find(@p.recipient_id).id %>"><%= User.find(@p.recipient_id).name %> </a></span> <span class=post-creation>- <%= @p.created_at.to_formatted_s(:short) %></span></p>
           <p class="post-content"><%= @p.content %></p>
         </div>
         <div class="col-sm-12">
@@ -169,7 +169,7 @@
       <div class="panel-body">
         <h5 style="color: grey; font-size: 125%;">Consider following:</h5>
         <% for @u in @to_follow do %>
-        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.id %>"><%= @u.username %></a></p>
+        <p style="font-wight: bold; opacity:0.85;"><a href="/user/<%= @u.id %>"><%= @u.name %></a></p>
         <% end %>
       </div>
     </div>
